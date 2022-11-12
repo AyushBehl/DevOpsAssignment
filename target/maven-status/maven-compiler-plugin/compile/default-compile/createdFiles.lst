@@ -1,0 +1,7 @@
+com/c4c/demo/product.class
+com/c4c/demo/ProductHistory.class
+com/c4c/demo/DemoApplication.class
+com/c4c/demo/ProductSave.class
+com/c4c/demo/ProductController.class
+com/c4c/demo/InitializationComponent.class
+com/c4c/demo/ProductRepository.class
