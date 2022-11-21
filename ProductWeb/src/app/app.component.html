@@ -21,16 +21,16 @@
               <div class="card m-b-30">
                   <div class="card-body row">
                       <div class="col-6">
-                          <a href=""><img src="{{product?.imgUrl}}" alt="" class="img-fluid rectangle w-100"></a>
+                          <a href=""><img src="{{product.imgUrl}}" alt="" class="img-fluid rectangle w-100"></a>
                       </div>
                       <div class="col-6 card-title align-self-center mb-0">
-                          <h5>{{product?.name}}</h5>
-                          <p class="m-0">{{product?.description}}</p>
+                          <h5>{{product.name}}</h5>
+                          <p class="m-0">{{product.description}}</p>
                       </div>
                   </div>
                   <ul class="list-group list-group-flush">
-                      <li class="list-group-item"><i class="fa fa-envelope float-right"></i>User ID: {{product?.userId}}</li>
-                      <li class="list-group-item"><i class="fa fa-phone float-right"></i>User : {{product?.userName}}</li>
+                      <li class="list-group-item"><i class="fa fa-envelope float-right"></i>User ID: {{product.userId}}</li>
+                      <li class="list-group-item"><i class="fa fa-phone float-right"></i>User : {{product.userName}}</li>
                   </ul>
                   <div class="card-body">
                      <div class="float-left btn-group btn-group-sm">
@@ -42,10 +42,10 @@
                       </div>
                   </div>
               </div>
-          </div> 
+          </div>
       </div>
   </div>
-  
+
   <!-- Add Product Modal -->
   <div class="modal fade" id="addProductModal" tabindex="-1" role="dialog" aria-labelledby="addProductModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
@@ -87,13 +87,13 @@
       </div>
     </div>
     </div>
-  
+
     <!-- Edit Modal -->
   <div class="modal fade" id="updateProductModal" tabindex="-1" role="dialog" aria-labelledby="productEditModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
        <div class="modal-content">
           <div class="modal-header">
-             <h5 class="modal-title" id="updateProductModalLabel">Edit Product {{editProduct?.name}}</h5>
+             <h5 class="modal-title" id="updateProductModalLabel">Edit Product {{editProduct.name}}</h5>
              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
              <span aria-hidden="true">&times;</span>
              </button>
@@ -102,24 +102,24 @@
              <form #editForm="ngForm">
                 <div class="form-group">
                    <label for="name">Name</label>
-                   <input type="text" ngModel="{{editProduct?.name}}" name="name" class="form-control" id="name" aria-describedby="emailHelp" placeholder="Name">
+                   <input type="text" ngModel="{{editProduct.name}}" name="name" class="form-control" id="name" aria-describedby="emailHelp" placeholder="Name">
                 </div>
-                <input type="hidden" ngModel="{{editProduct?.productId}}" name="productId" class="form-control" id="productId" placeholder="Email">
+                <input type="hidden" ngModel="{{editProduct.productId}}" name="productId" class="form-control" id="productId" placeholder="Email">
                 <div class="form-group">
                    <label for="description">Description</label>
-                   <input type="text" ngModel="{{editProduct?.description}}" name="description" class="form-control" id="description" placeholder="Description">
+                   <input type="text" ngModel="{{editProduct.description}}" name="description" class="form-control" id="description" placeholder="Description">
                 </div>
                 <div class="form-group">
                    <label for="imgUrl">Image URL</label>
-                   <input type="text" ngModel="{{editProduct?.imgUrl}}" name="imgUrl" class="form-control" id="imgUrl" placeholder="Image URL">
+                   <input type="text" ngModel="{{editProduct.imgUrl}}" name="imgUrl" class="form-control" id="imgUrl" placeholder="Image URL">
                 </div>
                 <div class="form-group">
                   <label for="userId">User ID</label>
-                  <input type="text" ngModel="{{editProduct?.userId}}" name="userId" class="form-control" id="userId" placeholder="User ID">
+                  <input type="text" ngModel="{{editProduct.userId}}" name="userId" class="form-control" id="userId" placeholder="User ID">
                </div>
                <div class="form-group">
                   <label for="userName">User Name</label>
-                  <input type="text" ngModel="{{editProduct?.userName}}" name="userName" class="form-control" id="userName" placeholder="User Name">
+                  <input type="text" ngModel="{{editProduct.userName}}" name="userName" class="form-control" id="userName" placeholder="User Name">
                </div>
                 <div class="modal-footer">
                    <button type="button" id="update-product-form" data-dismiss="modal" class="btn btn-secondary">Close</button>
@@ -130,7 +130,7 @@
        </div>
     </div>
   </div>
-  
+
   <!-- Delete Modal -->
   <div class="modal fade" id="deleteProductModal" tabindex="-1" role="dialog" aria-labelledby="deleteModelLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
@@ -142,10 +142,10 @@
              </button>
           </div>
           <div class="modal-body">
-             <p>Are you sure you want to delete product {{deleteProduct?.name}}?</p>
+             <p>Are you sure you want to delete product {{deleteProduct.name}}?</p>
              <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
-                <button (click)="onDeleteProduct(deleteProduct?.productId!)" class="btn btn-danger" data-dismiss="modal">Yes</button>
+                <button (click)="onDeleteProduct(deleteProduct.productId!)" class="btn btn-danger" data-dismiss="modal">Yes</button>
              </div>
           </div>
        </div>
@@ -163,10 +163,10 @@
             </button>
          </div>
          <div class="modal-body">
-            <p>Are you sure you want to delete product {{deleteProduct?.name}}?</p>
+            <p>Are you sure you want to delete product {{deleteProduct.name}}?</p>
             <div class="modal-footer">
                <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
-               <button (click)="onDeleteProduct(deleteProduct?.productId!)" class="btn btn-danger" data-dismiss="modal">Yes</button>
+               <button (click)="onDeleteProduct(deleteProduct.productId!)" class="btn btn-danger" data-dismiss="modal">Yes</button>
             </div>
          </div>
       </div>
@@ -174,13 +174,12 @@
  </div>
 
 
-  
+
     <!-- Notification for no products -->
-  <div *ngIf="products?.length == 0" class="col-lg-12 col-md-12 col-xl-12">
+  <div *ngIf="products.length == 0" class="col-lg-12 col-md-12 col-xl-12">
     <div class="alert alert-info" role="alert">
       <h4 class="alert-heading">NO PRODUCTS!</h4>
       <p>No Products were found.</p>
     </div>
     </div>
-  
-            
+
