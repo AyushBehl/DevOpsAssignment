@@ -64,7 +64,7 @@ public class ProductController {
         ProductSave.setDescription(product.getDescription());
 
         List<ProductHistory> productHistory=new ArrayList<>();
-        //productHistory= ProductSave.getProductHistory();
+        
         ProductHistory newHistory=new ProductHistory();
         newHistory.setUserID(product.getUserId());
         newHistory.setUserName(product.getUserName());
