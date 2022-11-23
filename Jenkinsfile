@@ -10,6 +10,13 @@ pipeline {
                 sh 'mvn clean install'
             }
         }
+        stage('SonarQube Analysis') {
+            steps {
+                withSonarQubeEnv('sqdevops') {
+                    sh "mvn sonar:sonar -Dsonar.projectKey=devops-project"
+                }
+            }
+        }
         stage('Build Docker Image'){
             steps{
                 script {
