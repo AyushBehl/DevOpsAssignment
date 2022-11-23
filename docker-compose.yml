@@ -5,18 +5,16 @@ services:
     restart: always
     ports:
       - 8080:8080
-#    depends_on:
-#      - mongo_db
+
   mongo_db:
     image: "mongo:4.4.3"
     restart: always
     ports:
       - 27017:27017
+
   frontend:
     build:
       context: ./ProductWeb
       dockerfile: Dockerfile
     ports:
         - 4200:4200
-#    depends_on:
-#    - backend
