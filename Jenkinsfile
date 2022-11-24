@@ -16,6 +16,7 @@ pipeline {
                 dir('ProductWeb'){
                 sh 'npm install -g @angular/cli'
                 sh 'npm install get-intrinsic'
+                sh 'npm run sonar'
                 sh 'npm run build --prod'
                 sh 'echo Angular Project Build'
                 }
