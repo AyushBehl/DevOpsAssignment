@@ -10,6 +10,17 @@ pipeline {
                 sh 'mvn clean install'
             }
         }
+        stage('Build Angular Project'){
+            steps{
+                checkout([$class: 'GitSCM', branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/AyushBehl/DevOpsAssignment']]])
+                dir('ProductWeb'){
+                sh 'npm install -g @angular/cli'
+                sh 'npm install get-intrinsic'
+                sh 'npm run build --prod'
+                sh 'echo Angular Project Build'
+                }
+            }
+        }
         stage('SonarQube Analysis') {
             steps {
                 withSonarQubeEnv('sqdevops') {
