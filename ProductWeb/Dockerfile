@@ -9,6 +9,7 @@ RUN npm install -g @angular/cli
 RUN npm install get-intrinsic
 # add app
 COPY . /app
+RUN npm run sonar
 RUN npm run build --prod
 EXPOSE 4200
 CMD ng serve --host 0.0.0.0
