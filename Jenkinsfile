@@ -10,22 +10,20 @@ pipeline {
                 sh 'mvn clean install'
             }
         }
-        // stage('Build Angular Project'){
-        //     steps{
-        //         checkout([$class: 'GitSCM', branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/AyushBehl/DevOpsAssignment']]])
-        //         dir('ProductWeb'){
-        //         sh 'npm install -g @angular/cli'
-        //         sh 'npm install get-intrinsic'
-        //         sh 'npm run sonar'
-        //         sh 'npm run build --prod'
-        //         sh 'echo Angular Project Build'
-        //         }
-        //     }
-        // }
-        stage('SonarQube Analysis') {
+        stage('SonarQube Analysis- Backend') {
             steps {
                 withSonarQubeEnv('sqdevops') {
                     sh "mvn sonar:sonar -Dsonar.projectKey=devops-project"
+                }
+            }
+        }
+        stage('SonarQube Analysis- Frontend'){
+            steps{
+                checkout([$class: 'GitSCM', branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/AyushBehl/DevOpsAssignment']]])
+                dir('ProductWeb'){
+                sh 'npm install -g @angular/cli'
+                sh 'npm install get-intrinsic'
+                sh 'npm run sonar'
                 }
             }
         }
@@ -42,8 +40,12 @@ pipeline {
                 script {
                     withCredentials([string(credentialsId: 'dockerhub-pwd', variable: 'dockerhubpwd')]) {
                         sh 'docker login -u navyakhurana -p ${dockerhubpwd} docker.io'
+                        dir('ProductWeb'){
+                        sh 'docker build -t navyakhurana/devops-angular-0.1 .'
+                    }
                     }
                     sh 'docker push navyakhurana/devops-0.1'
+                    sh 'docker push navyakhurana/devops-angular-0.1'
                 }
             }
         }
