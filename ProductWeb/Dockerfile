@@ -1,9 +1,14 @@
 #stage 1
 FROM node:latest as node
 WORKDIR /app
+ENV PATH /app/node_modules/.bin:$PATH
+# install and app dependencies
+COPY package.json /app/package.json
+RUN npm install
 RUN npm install -g @angular/cli
 RUN npm install get-intrinsic
-COPY . .
+# add app
+COPY . /app
 RUN npm run build --prod
 EXPOSE 4200
 ENTRYPOINT ["ng", "serve", "--host", "0.0.0.0"]
