@@ -32,6 +32,9 @@ pipeline {
                 script {
                     sh 'docker logout'
                     sh 'docker build -t navyakhurana/devops-0.1 .'
+                    dir('ProductWeb'){
+                        sh 'docker build -t navyakhurana/devops-angular-0.1 .'
+                    }
                 }
             }
         }
@@ -40,9 +43,6 @@ pipeline {
                 script {
                     withCredentials([string(credentialsId: 'dockerhub-pwd', variable: 'dockerhubpwd')]) {
                         sh 'docker login -u navyakhurana -p ${dockerhubpwd} docker.io'
-                        dir('ProductWeb'){
-                        sh 'docker build -t navyakhurana/devops-angular-0.1 .'
-                    }
                     }
                     sh 'docker push navyakhurana/devops-0.1'
                     sh 'docker push navyakhurana/devops-angular-0.1'
