@@ -15,7 +15,6 @@ export class AppComponent implements OnInit{
   public deleteProduct!: Product;
 
   constructor(private productService: ProductService){}
-  
 
   ngOnInit() {
       this.getProduct();
@@ -42,7 +41,7 @@ export class AppComponent implements OnInit{
       }
     );
   }
-  
+
   public onAddProduct(addForm: NgForm): void {
     const add = document.getElementById('add-product-form');
     add?.click();
@@ -135,6 +134,6 @@ export class AppComponent implements OnInit{
     button.setAttribute('data-target', '#historyProductModal');
     document.getElementById('main-container')?.appendChild(button);
     button.click();
-  
+
   }
 }
